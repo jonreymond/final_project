@@ -12,6 +12,9 @@ def sent_analyzer():
     text_to_analyze = request.args.get('textToAnalyze')
     response = emotion_detector(text_to_analyze)
 
+    if not response["dominant_emotion"]:
+        return "<b>Invalid text! Please try again!.</b>"
+
     output = "For the given statement, the system response is "
     dominant_emotion = response.pop("dominant_emotion")
 
