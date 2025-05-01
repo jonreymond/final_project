@@ -10,7 +10,7 @@ def emotion_detector(text_to_analyse):
     blank_dict = {'anger': None, 'disgust': None, 'fear': None, 'joy': None,
                  'sadness': None, "dominant_emotion": None}
 
-    if text_to_analyze.strip():
+    if text_to_analyse.strip():
         return blank_dict
         
 
