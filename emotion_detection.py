@@ -1,6 +1,6 @@
 import requests
 import json
-# formatted_response = json.loads(response.text)
+
 
 def emotion_detector(text_to_analyse):
     '''
@@ -13,7 +13,11 @@ def emotion_detector(text_to_analyse):
     headers = {"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_stock"}
     response = requests.post(url, json=myobj, headers=headers)
 
-    return response.text
+    formatted_response = json.loads(response.text)
+    emotions = formatted_response['emotionPredictions'][0]['emotion']
+    emotions['dominant_emotion'] = max(emotions, key=emotions.get)
+
+    return emotions
 
 
 
